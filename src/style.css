@@ -1,0 +1,146 @@
+.sun {
+    position: relative;
+    width: 250px;
+    height: 203px;
+    touch-action: none;
+    user-select: none;
+}
+
+#cloud {
+    position: relative;
+    width: 240px;
+    height: 180px;
+    touch-action: none;
+    user-select: none;
+}
+
+#box {
+    position: relative;
+    margin: 0 auto;
+    width: 40%;
+    border-style: groove;
+    border-radius: 20px;
+}
+
+#answer-box {
+    margin: 2% auto;
+    width: 20%;
+    height: 50px;
+    text-align: center;
+    border-style: groove;
+    border-radius: 20px;
+}
+
+/* raaiiinnnn coodeeee */
+
+.rain {
+    width: 240px;
+    height: 110px;
+}
+
+.drop {
+    position: relative;
+    float: left;
+    width: 2px;
+    margin: 20px;
+    left: 40px;
+    background: #789;
+    box-shadow: 1px 0.5px 1px 0.5px rgba(0, 0, 0, 0.75);
+    animation: rain 0.8s infinite ease-out;
+}
+
+.drop:nth-child(1) {
+    height: 10px;
+    top: 5px;
+    animation-delay: -1.0s;
+}
+
+.drop:nth-child(2) {
+    height: 10px;
+    animation-delay: -1.4s;
+}
+
+.drop:nth-child(3) {
+    height: 10px;
+    top: 5px;
+    animation-delay: -1.6s;
+}
+
+.drop:nth-child(4) {
+    height: 10px;
+    top: 5px;
+    animation-delay: -1.2s;
+}
+
+.drop:nth-child(5) {
+    height: 5px;
+    top: 10px;
+    animation-delay: -1.6s;
+}
+
+@keyframes rain {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    100% {
+        opacity: 0.2;
+        transform: translate(0, 100px);
+    }
+}
+
+.surface {
+    position: relative;
+    width: 240px;
+    height: 110px;
+    top: -90px;
+}
+
+.hit {
+    position: absolute;
+    width: 3px;
+    height: 1px;
+    margin: 10px;
+    bottom: -5px;
+    border: 1px solid #456;
+    border-radius: 50%;
+    animation: hit 0.8s infinite ease;
+}
+
+.hit:nth-child(1) {
+    left: 19px;
+    animation-delay: -0.3s;
+}
+
+.hit:nth-child(2) {
+    left: 70px;
+    animation-delay: -0.7s;
+}
+
+.hit:nth-child(3) {
+    left: 120px;
+    animation-delay: -0.9s;
+}
+
+.hit:nth-child(4) {
+    left: 170px;
+    animation-delay: -0.5s;
+}
+
+.hit:nth-child(5) {
+    left: 220px;
+    animation-delay: -0.9s;
+}
+
+@keyframes hit {
+    0% {
+        opacity: 0.75;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(2.5);
+    }
+}
