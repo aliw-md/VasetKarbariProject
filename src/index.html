@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js" ></script>
+    <script src="./functions.js" defer></script>
     <link href="./style.css" rel="stylesheet">
     <script src="./drag.js"></script>
     <title>Document</title>
@@ -13,10 +14,10 @@
 
 <body>
     <div id="box">
-        <img src="./sun.png" alt="drag-and-drop image script" title="drag-and-drop image script" class="draggable sun">
-        <div class="draggable" >
-            <img src="./cloud.png" alt="drag-and-drop image script" title="drag-and-drop image script" id="cloud" onclick="myClick()">
-            <div class="rain" id="rain" hidden>
+        <img src="../files/sun.png" alt="drag-and-drop image script" title="drag-and-drop image script" class="DraggableSun sun">
+        <div class="DraggableCloud" >
+            <img src="../files/cloud.png" alt="drag-and-drop image script" title="drag-and-drop image script" id="cloud" ondblclick="myClick()">
+            <div class="rain" id="rain" >
                 <div class=drop></div>
                 <div class=drop></div>
                 <div class=drop></div>
@@ -26,7 +27,7 @@
                 <div class=drop></div>
                 <div class=drop></div>
             </div>
-            <div class="surface" id="surface" hidden>
+            <div class="surface" id="surface">
                 <div class=hit></div>
                 <div class=hit></div>
                 <div class=hit></div>
@@ -41,23 +42,4 @@
     <div id="answer-box">hello</div>
 </body>
 
-
 </html>
-<script>
-function myClick(){
-    console.log("inesh shod");
-
-    let rain = getElementById('rain');
-    let surface = getElementById('surface');
-    if (rainCheck == 0){
-        console.log("roo avali click shode");
-        rain.setAttribute("hidden", false);
-        surface.setAttribute("hidden", false);
-        rainCheck=1;
-    }else{
-        console.log("roo dovomi click shode");
-        rain.setAttribute("hidden", true);
-        surface.setAttribute("hidden", true);
-        rainCheck=0;
-    }
-}</script>

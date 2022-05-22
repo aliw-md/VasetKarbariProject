@@ -18,6 +18,7 @@
     position: relative;
     margin: 0 auto;
     width: 40%;
+    display: flex;
     border-style: groove;
     border-radius: 20px;
 }

@@ -1,11 +1,10 @@
 const position = { x: 0, y: 0 }
-const rainCheck = 0;
-interact('.draggable').draggable({
+interact('.DraggableSun').draggable({
     startAxis: 'x',
     lockAxis: 'x',
     listeners: {
         start(event) {
-            console.log(event.type, event.target)
+            console.log("I am Sun: ", event.type, event.target)
         },
         move(event) {
             position.x += event.dx
@@ -15,4 +14,20 @@ interact('.draggable').draggable({
                 `translate(${position.x}px, ${position.y}px)`
         },
     }
-})
+});
+interact('.DraggableCloud').draggable({
+    startAxis: 'x',
+    lockAxis: 'x',
+    listeners: {
+        start(event) {
+            console.log("I am cloud: ", event.type, event.target)
+        },
+        move(event) {
+            position.x += event.dx
+            position.y += event.dy
+
+            event.target.style.transform =
+                `translate(${position.x}px, ${position.y}px)`
+        },
+    }
+});
