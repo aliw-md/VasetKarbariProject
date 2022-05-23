@@ -8,7 +8,7 @@
 
 #cloud {
     position: relative;
-    width: 240px;
+    width: 210px;
     height: 180px;
     touch-action: none;
     user-select: none;
@@ -17,7 +17,15 @@
 #box {
     position: relative;
     margin: 0 auto;
-    width: 40%;
+    width: 50%;
+    display: flex;
+    border-style: groove;
+    border-radius: 20px;
+}
+#inner-box {
+    position: relative;
+    margin: 5 5;
+    width: 50%;
     display: flex;
     border-style: groove;
     border-radius: 20px;
@@ -26,7 +34,7 @@
 #answer-box {
     margin: 2% auto;
     width: 20%;
-    height: 50px;
+    height: 50%;
     text-align: center;
     border-style: groove;
     border-radius: 20px;
