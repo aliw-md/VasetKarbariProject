@@ -8,7 +8,7 @@ interact('.DraggableSun').draggable({
     inertia: true,
     // keep the element within the area of it's parent
     restrict: {
-        restriction: "parent",
+        restriction: "#outer-box",
         endOnly: true,
         elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
     },
@@ -25,13 +25,13 @@ interact('.DraggableSun').draggable({
         },
     }
 
-});
+})
 interact('.DraggableCloud').draggable({
     //startAxis: 'x',
     lockAxis: 'x',
     inertia: true,
     restrict: {
-        restriction: "parent",
+        restriction: "#outer-box",
         endOnly: true,
         elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
     },
@@ -47,4 +47,57 @@ interact('.DraggableCloud').draggable({
                 `translate(${position.x}px, ${position.y}px)`
         },
     }
-});
+})
+
+
+
+
+
+
+
+
+
+
+
+/* The dragging code for '.draggable' from the demo above
+ * applies to this demo as well so it doesn't have to be repeated. */
+
+// enable draggables to be dropped into this
+interact('.dropzone').dropzone({
+    // only accept elements matching this CSS selector
+    accept: '.sun , .cloud',
+    // Require a 75% element overlap for a drop to be possible
+    overlap: 0.75,
+  
+    // listen for drop related events:
+  
+    ondropactivate: function (event) {
+      // add active dropzone feedback
+      event.target.classList.add('drop-active')
+    },
+    ondragenter: function (event) {
+      var draggableElement = event.relatedTarget
+      var dropzoneElement = event.target
+  
+      // feedback the possibility of a drop
+      dropzoneElement.classList.add('drop-target')
+      draggableElement.classList.add('can-drop')
+    //   draggableElement.textContent = 'Dragged in'
+    },
+    ondragleave: function (event) {
+      // remove the drop feedback style
+      event.target.classList.remove('drop-target')
+      event.relatedTarget.classList.remove('can-drop')
+      //event.relatedTarget.textContent = 'Dragged out'
+    },
+    ondrop: function (event) {
+      console.log("dropped");
+    },
+    ondropdeactivate: function (event) {
+      // remove active dropzone feedback
+      event.target.classList.remove('drop-active')
+      event.target.classList.remove('drop-target')
+    }
+  })
+  
+
