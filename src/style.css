@@ -1,4 +1,4 @@
-.sun {
+#sun {
     position: relative;
     width: 250px;
     height: 203px;
@@ -14,21 +14,23 @@
     user-select: none;
 }
 
-#box {
-    position: relative;
+#outer-box {
+    position: flex;
     margin: 0 auto;
-    width: 50%;
+    width: 60%;
     display: flex;
     border-style: groove;
-    border-radius: 20px;
+    border-color: gray;
+    border-radius: 30px;
 }
 #inner-box {
     position: relative;
     margin: 5 5;
-    width: 50%;
+    width: 60%;
     display: flex;
     border-style: groove;
-    border-radius: 20px;
+    border-color: bisque;
+    border-radius: 30px;
 }
 
 #answer-box {
@@ -153,3 +155,5 @@
         transform: scale(2.5);
     }
 }
+
+/* //////////////////////////////// */
