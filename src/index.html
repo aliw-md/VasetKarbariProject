@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js" ></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js" ></script> -->
+    <script src="./interact.min.js"></script>
     <script src="./functions.js" defer></script>
     <link href="./style.css" rel="stylesheet">
     <script src="./drag.js"></script>
@@ -13,29 +14,33 @@
 </head>
 
 <body>
-    <div id="box">
-        <img src="../files/sun.png" alt="drag-and-drop image script" title="drag-and-drop image script" class="DraggableSun sun">
-        <div class="DraggableCloud" >
-            <img src="../files/cloud.png" alt="drag-and-drop image script" title="drag-and-drop image script" id="cloud" ondblclick="myClick()">
-            <div class="rain" id="rain" >
-                <div class=drop></div>
-                <div class=drop></div>
-                <div class=drop></div>
-                <div class=drop></div>
-                <div class=drop></div>
-                <div class=drop></div>
-                <div class=drop></div>
-                <div class=drop></div>
-            </div>
-            <div class="surface" id="surface">
-                <div class=hit></div>
-                <div class=hit></div>
-                <div class=hit></div>
-                <div class=hit></div>
-                <div class=hit></div>
-                <div class=hit></div>
-                <div class=hit></div>
-                <div class=hit></div>
+    <div id="outer-box">
+        <div id="inner-box" class="dropzone">
+            <img src="../files/sun.png" alt="drag-and-drop image script" title="drag-and-drop image script" id="sun"
+                class="DraggableSun sun">
+            <div class="DraggableCloud cloud">
+                <img src="../files/cloud.png" alt="drag-and-drop image script" title="drag-and-drop image script"
+                    id="cloud" ondblclick="myClick()">
+                <div class="rain" id="rain">
+                    <div class=drop></div>
+                    <div class=drop></div>
+                    <div class=drop></div>
+                    <div class=drop></div>
+                    <div class=drop></div>
+                    <div class=drop></div>
+                    <div class=drop></div>
+                    <div class=drop></div>
+                </div>
+                <div class="surface" id="surface">
+                    <div class=hit></div>
+                    <div class=hit></div>
+                    <div class=hit></div>
+                    <div class=hit></div>
+                    <div class=hit></div>
+                    <div class=hit></div>
+                    <div class=hit></div>
+                    <div class=hit></div>
+                </div>
             </div>
         </div>
     </div>
