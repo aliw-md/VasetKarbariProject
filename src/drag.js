@@ -1,6 +1,6 @@
 const position = { x: 0, y: 0 }
 // target elements with the "draggable" class
-interact('.DraggableSun').draggable({
+interact('.DraggableSun ,.DraggableCloud').draggable({
   //startAxis: 'x',
   lockAxis: 'x',
   // enable inertial throwing
@@ -14,7 +14,7 @@ interact('.DraggableSun').draggable({
   },
   listeners: {
     start(event) {
-      console.log("I am Sun: ", event.type, event.target)
+      // console.log("I am event: ", event.type, event.target)
     },
     move(event) {
       position.x += event.dx
@@ -23,31 +23,40 @@ interact('.DraggableSun').draggable({
       event.target.style.transform =
         `translate(${position.x}px, ${position.y}px)`
     },
+    end(){
+
+
+      WeatherDetector();
+
+      
+    }
   }
 
 })
-interact('.DraggableCloud').draggable({
-  //startAxis: 'x',
-  lockAxis: 'x',
-  inertia: true,
-  restrict: {
-    restriction: "#outer-box",
-    endOnly: true,
-    elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-  },
-  listeners: {
-    start(event) {
-      console.log("I am cloud: ", event.type, event.target)
-    },
-    move(event) {
-      position.x += event.dx
-      position.y += event.dy
+// interact('.DraggableCloud').draggable({
+//   //startAxis: 'x',
+//   lockAxis: 'x',
+//   inertia: true,
+//   restrict: {
+//     restriction: "#outer-box",
+//     endOnly: true,
+//     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+//   },
+//   listeners: {
+//     start(event) {
+//       console.log("I am cloud: ", event.type, event.target)
+//     },
+//     move(event) {
+//       position.x += event.dx
+//       position.y += event.dy
 
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
-  }
-})
+//       event.target.style.transform =
+//         `translate(${position.x}px, ${position.y}px)`
+//     },
+//     end(event) {
+//     }
+//   }
+// })
 
 
 
@@ -97,18 +106,6 @@ interact('.dropzone').dropzone({
   },
   ondrop: function (event) {
     console.log("dropped");
-
-    var cloud = document.getElementById("cloud");
-    var sun = document.getElementById("sun");
-
-    if(IsElementsOverlapping(cloud, sun)){
-      console.log("collision baby");
-      var perc = ElementsOverlapPercentage(cloud, sun);
-      //console.log(perc);
-    }
-
-
-
 
   },
   ondropdeactivate: function (event) {

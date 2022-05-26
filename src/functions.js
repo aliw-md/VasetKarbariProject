@@ -42,10 +42,53 @@ function ElementsOverlapPercentage(el1, el2) {
     } else {
         Overlap = Math.abs(domRect2.right - domRect1.left);
     }
-    console.log("overlap: ", Overlap);
-    console.log("El1Width: ", El1Width, "El2Width: ", El2Width);
+    // console.log("overlap: ", Overlap);
+    // console.log("El1Width: ", El1Width, "El2Width: ", El2Width);
 
-    console.log(parseFloat(100 / (BiggerWidth / Overlap)));
+    return (parseFloat(100 / (BiggerWidth / Overlap)));
+}
+function WeatherDetector() {
+    var cloud = document.getElementById("cloud");
+    var sun = document.getElementById("sun");
+    var DraggableCloud = document.getElementById("DraggableCloud");
+    var answer = document.getElementById("answer-box");
+
+
+    if (sun.classList.contains("can-drop") || DraggableCloud.classList.contains("can-drop")) {
+
+
+        if (IsElementsOverlapping(cloud, sun)) {
+            console.log("collision baby");
+            var perc = ElementsOverlapPercentage(cloud, sun);
+            console.log("Overlap percentage: %", perc);
+
+            if (perc <= 40) {
+                answer.textContent = "mostly sunny";
+            }
+            else if (40 < perc && perc < 50) {
+                answer.textContent = "half sunny";
+            }
+            else if (perc >= 50) {
+                answer.textContent = "mostly cloudy";
+            }
+
+        } else {
+            console.log("draggable fuckin cloudddd class list: ", DraggableCloud);
+            console.log("has sun can-drop class? ", sun.classList.contains("can-drop"));
+            console.log("has cloud can-drop class? ", DraggableCloud.classList.contains("can-drop"));
+
+            if (sun.classList.contains("can-drop") && DraggableCloud.classList.contains("can-drop")) {
+                answer.textContent = "sunny with spreaded clouds";
+            } else if (sun.classList.contains("can-drop") && !DraggableCloud.classList.contains("can-drop")) {
+                answer.textContent = "sunny";
+            }
+            else if (!sun.classList.contains("can-drop") && DraggableCloud.classList.contains("can-drop")) {
+                answer.textContent = "cloudy";
+            }
+        }
+    } else {
+        answer.textContent = "Please drag atleast one element into inner box :)";
+    }
 }
 
 
