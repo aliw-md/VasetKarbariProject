@@ -75,8 +75,8 @@ interact('.DraggableSun ,.DraggableCloud').draggable({
 interact('.dropzone').dropzone({
   // only accept elements matching this CSS selector
   accept: '.sun , .cloud',
-  // Require a 75% element overlap for a drop to be possible
-  overlap: 0.75,
+  // Require a 70% element overlap for a drop to be possible
+  overlap: 0.70,
 
   // listen for drop related events:
 
