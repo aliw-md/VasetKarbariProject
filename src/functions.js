@@ -36,7 +36,7 @@ function ElementsOverlapPercentage(el1, el2) {
     var El2Width = domRect2.right - domRect2.left;
 
     var Overlap;
-    var BiggerWidth = Math.max(El1Width, El2Width);
+    var SmallerWidth = Math.min(El1Width, El2Width);
     if (domRect1.left < domRect2.left) {
         Overlap = Math.abs(domRect1.right - domRect2.left);
     } else {
@@ -45,7 +45,7 @@ function ElementsOverlapPercentage(el1, el2) {
     // console.log("overlap: ", Overlap);
     // console.log("El1Width: ", El1Width, "El2Width: ", El2Width);
 
-    return (parseFloat(100 / (BiggerWidth / Overlap)));
+    return (parseFloat(100 / (SmallerWidth / Overlap)));
 }
 function WeatherDetector() {
     var cloud = document.getElementById("cloud");
@@ -65,10 +65,10 @@ function WeatherDetector() {
             if (perc <= 40) {
                 answer.textContent = "mostly sunny";
             }
-            else if (40 < perc && perc < 50) {
+            else if (40 < perc && perc < 60) {
                 answer.textContent = "half sunny";
             }
-            else if (perc >= 50) {
+            else if (perc >= 60) {
                 answer.textContent = "mostly cloudy";
             }
 
