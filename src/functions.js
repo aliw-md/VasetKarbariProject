@@ -1,4 +1,4 @@
-//0:none   1:raining  2:snowing
+//0:none   1:raining  
 var rainCheck = 0;
 var rain = document.getElementById("rain");
 var surface = document.getElementById("surface");
@@ -19,6 +19,7 @@ function myClick() {
         surface.style.display = 'none';
         rainCheck = 0;
     }
+    WeatherDetector();
 }
 
 function IsElementsOverlapping(el1, el2) {
@@ -30,6 +31,7 @@ function IsElementsOverlapping(el1, el2) {
         domRect1.left > domRect2.right
     );
 }
+
 function ElementsOverlapPercentage(el1, el2) {
     const domRect1 = el1.getBoundingClientRect();
     const domRect2 = el2.getBoundingClientRect();
@@ -55,40 +57,87 @@ function WeatherDetector() {
     var answer = document.getElementById("answer-box");
 
 
-    if (sun.classList.contains("can-drop") || DraggableCloud.classList.contains("can-drop")) {
+    if (!(sun.classList.contains("can-drop") || DraggableCloud.classList.contains("can-drop"))) {
+        answer.textContent = "Please drag atleast one element into inner box :)";
+    }
+    else {
+        if (rainCheck == 0) {
+            if (sun.classList.contains("can-drop") || DraggableCloud.classList.contains("can-drop")) {
+                if (IsElementsOverlapping(cloud, sun)) {
+                    // console.log("collisionnnn shod");
+                    var perc = ElementsOverlapPercentage(cloud, sun);
+                    // console.log("Overlap percentage: %", perc);
+
+                    if (perc <= 25) {
+                        answer.textContent = "mostly sunny";
+                    }
+                    else if (25 < perc && perc < 60) {
+                        answer.textContent = "partly cloudy";
+                    }
+                    else if (perc >= 60) {
+                        answer.textContent = "mostly cloudy";
+                    }
+
+                } else {
+                    if (sun.classList.contains("can-drop") && !DraggableCloud.classList.contains("can-drop")) {
+                        answer.textContent = "sunny";
+                    } else {
+                        if (sun.classList.contains("can-drop") && DraggableCloud.classList.contains("can-drop")) {
+                            answer.textContent = "mostly sunny";
+                        }
+                        else if (!sun.classList.contains("can-drop") && DraggableCloud.classList.contains("can-drop")) {
+                            answer.textContent = "ovarcast";
+                        }
+                    }
+                    // console.log("draggable cloud class list: ", DraggableCloud);
+                    // console.log("has sun can-drop class? ", sun.classList.contains("can-drop"));
+                    // console.log("has cloud can-drop class? ", DraggableCloud.classList.contains("can-drop"));
+
+                }
+            } else {
+            }
 
 
-        if (IsElementsOverlapping(cloud, sun)) {
-            console.log("collision baby");
-            var perc = ElementsOverlapPercentage(cloud, sun);
-            console.log("Overlap percentage: %", perc);
-
-            if (perc <= 40) {
-                answer.textContent = "mostly sunny";
-            }
-            else if (40 < perc && perc < 60) {
-                answer.textContent = "half sunny";
-            }
-            else if (perc >= 60) {
-                answer.textContent = "mostly cloudy";
-            }
 
         } else {
-            console.log("draggable fuckin cloudddd class list: ", DraggableCloud);
-            console.log("has sun can-drop class? ", sun.classList.contains("can-drop"));
-            console.log("has cloud can-drop class? ", DraggableCloud.classList.contains("can-drop"));
 
-            if (sun.classList.contains("can-drop") && DraggableCloud.classList.contains("can-drop")) {
-                answer.textContent = "sunny with spreaded clouds";
-            } else if (sun.classList.contains("can-drop") && !DraggableCloud.classList.contains("can-drop")) {
-                answer.textContent = "sunny";
+            if (sun.classList.contains("can-drop") || DraggableCloud.classList.contains("can-drop")) {
+                if (IsElementsOverlapping(cloud, sun)) {
+                    console.log("collision baby");
+                    var perc = ElementsOverlapPercentage(cloud, sun);
+                    console.log("Overlap percentage: %", perc);
+
+                    if (perc <= 25) {
+                        answer.textContent = "mostly sunny + rain";
+                    }
+                    else if (25 < perc && perc < 60) {
+                        answer.textContent = "partly cloudy + rain";
+                    }
+                    else if (perc >= 60) {
+                        answer.textContent = "mostly cloudy + rain";
+                    }
+
+                } else {
+                    if (sun.classList.contains("can-drop") && !DraggableCloud.classList.contains("can-drop")) {
+                        answer.textContent = "sunny";
+                    } else {
+                        if (sun.classList.contains("can-drop") && DraggableCloud.classList.contains("can-drop")) {
+                            answer.textContent = "light rain";
+                        }
+                        else if (!sun.classList.contains("can-drop") && DraggableCloud.classList.contains("can-drop")) {
+                            answer.textContent = "raining";
+                        }
+                    }
+                    // console.log("draggable cloud class list: ", DraggableCloud);
+                    // console.log("has sun can-drop class? ", sun.classList.contains("can-drop"));
+                    // console.log("has cloud can-drop class? ", DraggableCloud.classList.contains("can-drop"));
+
+                }
+            } else {
+                answer.textContent = "Please drag atleast one element into inner box :)";
             }
-            else if (!sun.classList.contains("can-drop") && DraggableCloud.classList.contains("can-drop")) {
-                answer.textContent = "cloudy";
-            }
+            
         }
-    } else {
-        answer.textContent = "Please drag atleast one element into inner box :)";
     }
 }
 
