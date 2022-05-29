@@ -1,7 +1,7 @@
 const position = { x: 0, y: 0 }
 
 
-interact('.DraggableSun ,.DraggableCloud').draggable({
+interact('.DraggableSun ,.DraggableCloud , .DraggableSnow').draggable({
   //startAxis: 'x',
   lockAxis: 'x',
   // enable inertial throwing
@@ -44,7 +44,7 @@ interact('.DraggableCloud')
 // enable draggables to be dropped into this
 interact('.dropzone').dropzone({
   // only accept elements matching this CSS selector
-  accept: '.sun , .cloud ',
+  accept: '.sun , .cloud , .snow',
   // Require a 70% element overlap for a drop to be possible
   overlap: 0.70,
 

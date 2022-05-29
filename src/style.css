@@ -24,7 +24,14 @@ flex-direction: column;
     width: 100%;
     max-width: 210px;
     height: auto;
-    max-height: 180px;
+    max-height: 190px;
+    touch-action: none;
+    user-select: none;
+}
+#snow{
+    position: relative;
+    width: 12vw;
+    height: 12vw;
     touch-action: none;
     user-select: none;
 }

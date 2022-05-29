@@ -53,18 +53,21 @@ function ElementsOverlapPercentage(el1, el2) {
 function WeatherDetector() {
     var cloud = document.getElementById("cloud");
     var sun = document.getElementById("sun");
+    var snow = document.getElementById("snow");
     var DraggableCloud = document.getElementById("DraggableCloud");
     var answer = document.getElementById("answer-box");
+    var SnowIn = snow.classList.contains("can-drop");
+    var SunIn = sun.classList.contains("can-drop");
+    var DraggableCloudIn = DraggableCloud.classList.contains("can-drop");
 
-
-    if (!(sun.classList.contains("can-drop") || DraggableCloud.classList.contains("can-drop"))) {
+    if (!(SunIn || DraggableCloudIn || SnowIn)) {
         answer.textContent = "Please drag atleast one element into inner box :)";
     }
     else {
         if (rainCheck == 0) {
             if (sun.classList.contains("can-drop") || DraggableCloud.classList.contains("can-drop")) {
                 if (IsElementsOverlapping(cloud, sun)) {
-                    // console.log("collisionnnn shod");
+                    console.log("collisionnnn");
                     var perc = ElementsOverlapPercentage(cloud, sun);
                     // console.log("Overlap percentage: %", perc);
 
@@ -94,10 +97,7 @@ function WeatherDetector() {
                     // console.log("has cloud can-drop class? ", DraggableCloud.classList.contains("can-drop"));
 
                 }
-            } else {
             }
-
-
 
         } else {
 
@@ -133,13 +133,16 @@ function WeatherDetector() {
                     // console.log("has cloud can-drop class? ", DraggableCloud.classList.contains("can-drop"));
 
                 }
-            } else {
-                answer.textContent = "Please drag atleast one element into inner box :)";
             }
-            
+        }
+        if (SnowIn) {
+            if (SnowIn && !(SunIn || DraggableCloudIn)) {
+                answer.textContent = "snowing";
+            }
+            else {
+                answer.textContent = answer.textContent + " + snow"
+            }
+
         }
     }
 }
-
-
-
